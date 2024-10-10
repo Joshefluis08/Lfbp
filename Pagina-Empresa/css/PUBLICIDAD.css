@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F8F8FF;
+    margin: 0;
+    padding-top: 80px;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #0f2b5d;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 70px;
+    border-radius: 10px;
+}
+
+.nav-list {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-list li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-list a:hover {
+    background-color: #c12020;
+    color: white;
+    border-radius: 5px;
+}
+
+/* Estilos del menú hamburguesa */
+.abrir-menu,
+.cerrar-menu {
+    display: none;
+}
+
+/* CARRUSEL */
+.carrusel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+
+.imagenes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.img {
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.85);
+    height: auto;
+    width: 100%;
+    max-width: 1134px;
+    border-radius: 15px;
+    margin: 5px;
+    object-fit: cover;
+    filter: saturate(175%);
+}
+
+.texto {
+    overflow: hidden;
+    position: absolute;
+    flex-direction: column;
+    transform: translateY(0px);
+    margin-bottom: 9px;
+    backdrop-filter: blur(20px);
+    background-color: rgba(63, 106, 138, 0.21);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+}
+
+.texto h3 {
+    text-shadow: 0px 0px 15px black;
+    padding-top: 40px;
+    color: white;
+    font-weight: 300;
+    font-size: 27px;
+}
+
+.texto p {
+    align-items: center;
+    padding: 20px;
+    color: white;
+    font-size: 0px;
+    font-weight: 300;
+}
+
+.imagenes .texto {
+    width: 80%;
+    height: 100px;
+    transition: 1s;
+    max-width: 600px;
+}
+
+.imagenes:hover .texto {
+    transition: height 1s, transform 1s, background-color 1s;
+    transform: translateY(-150px);
+    height: 300px;
+    background-color: rgba(63, 106, 138, 0.71);
+}
+
+.imagenes:hover .texto p {
+    transition: font-size 0s .2s linear;
+    font-size: 23px;
+    font-weight: 300;
+    text-shadow: 0px 0px 10px #000000;
+}
+
+.puntos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.puntos p {
+    font-size: 100px;
+    font-weight: 500;
+    margin-top: -50px;
+    color: black;
+}
+
+.puntos .bold {
+    font-weight: 700;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #5E17EB;
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .img {
+        height: auto;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .imagenes .texto {
+        max-width: 400px;
+        height: 80px;
+    }
+
+    .imagenes:hover .texto {
+        transform: translateY(-100px);
+        height: 250px;
+    }
+
+    .texto h3 {
+        font-size: 22px;
+    }
+
+    .texto p {
+        font-size: 18px;
+    }
+
+    .puntos p {
+        font-size: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .img {
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .imagenes .texto {
+        max-width: 300px;
+        height: 70px;
+    }
+
+    .imagenes:hover .texto {
+        transform: translateY(-80px);
+        height: 200px;
+    }
+
+    .texto h3 {
+        font-size: 18px;
+    }
+
+    .texto p {
+        font-size: 14px;
+    }
+
+    .puntos p {
+        font-size: 50px;
+    }
+}
+
+/* texto movible*/
+.slider {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+    margin-top: 100px;
+    /* Ajusta el valor según el espacio que necesites */
+}
+
+div.slider {
+    background-color: #c12020;
+}
+
+.slider .slide-track {
+    display: flex;
+    gap: 20px;
+    /* Espacio entre las slides */
+    animation: scroll 40s linear infinite;
+    -webkit-animation: scroll 40s linear infinite;
+    width: calc(200px * 14 + 20px * 13);
+    /* Ajustar el ancho total considerando el espacio entre slides */
+    justify-content: space-between;
+    /* Distribuye las slides horizontalmente */
+    color: #f0f0f0;
+}
+
+.slider .slide {
+    width: 200px;
+    display: flex;
+    /* Asegurarse de que el contenido dentro esté alineado */
+    justify-content: center;
+    /* Centra el contenido dentro de cada slide */
+    align-items: center;
+    /* Centra el contenido verticalmente */
+    text-align: center;
+    /* Alinea el texto al centro */
+}
+
+.slider .slide img {
+    width: 100%;
+}
+
+@keyframes scroll {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    100% {
+        -webkit-transform: translateX(calc(-200px * 7));
+        transform: translateX(calc(-200px * 7));
+    }
+}
+
+/* CUADRÍCULA DE IMÁGENES */
+/* Estilos generales para alinear contenido */
+.content1,
+.content2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* Imagen a la izquierda, texto a la derecha */
+.content1 .imagen1 {
+    flex: 1;
+}
+
+.content1 .texto1 {
+    width: 50%;
+    /* Se ajusta al mismo ancho de la imagen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Texto a la izquierda, imagen a la derecha */
+.content2 .texto2 {
+    width: 50%;
+    /* Se ajusta al mismo ancho de la imagen */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content2 .imagen2 {
+    flex: 1;
+}
+
+/* Imagenes */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* SEPARADORES */
+
+.separator {
+    background-color: #c12020;
+    /* Color de fondo */
+    color: white;
+    /* Color del texto */
+    padding: 10px 20px;
+    /* Espaciado interno */
+    text-align: center;
+    /* Centra el texto */
+    font-size: 24px;
+    /* Tamaño de la fuente */
+    font-weight: bold;
+    /* Fuente en negrita */
+    margin: 20px 0;
+    /* Espacio arriba y abajo */
+}
+
+/* LOGOS DE CLIENTES */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.row img {
+    width: 23%;
+    /* Ajuste para que cuatro imágenes ocupen el ancho completo */
+    max-width: 150px;
+    border-radius: 8px;
+}
+
+.row:nth-child(2) img {
+    width: 100%;
+    /* Ajuste para que tres imágenes ocupen el ancho completo */
+}
+
+/* FOOTER */
+footer {
+    background-color: #0f2b5d;
+    color: #fff;
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+    flex-wrap: wrap;
+    /* Permite que los elementos se ajusten */
+}
+
+footer div {
+    flex: 1;
+    padding: 0 20px;
+    min-width: 250px;
+    /* Asegura que los divs tengan un ancho mínimo */
+}
+
+footer h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-family: monospace;
+}
+
+footer p {
+    font-size: 14px;
+    line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: red;
+}
+
+footer .social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+footer .social-icons a img {
+    width: 24px;
+    height: 24px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #222;
+    border: none;
+    color: #fff;
+}
+
+.contact-form textarea {
+    height: 100px;
+}
+
+.contact-form button {
+    background-color: red;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.contact-form button:hover {
+    background-color: #e60000;
+}
+
+footer .credits {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 12px;
+}
+
+footer .credits a {
+    color: red;
+}
+
+/* Links en el footer */
+.footer-links {
+    background-color: #c12020;
+    text-align: center;
+    padding: 10px;
+    color: white;
+}
+
+.footer-links a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Media Queries para pantallas más pequeñas */
+@media (max-width: 768px) {
+    footer {
+        flex-direction: column;
+        /* Acomoda los divs en columnas */
+        text-align: center;
+        padding: 20px 0;
+        /* Reduce el padding */
+    }
+
+    footer div {
+        padding: 10px 0;
+        /* Ajusta el padding interno */
+    }
+
+    .footer-links {
+        padding: 5px 0;
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+    .abrir-menu,
+    .cerrar-menu {
+        display: block;
+        border: 0;
+        font-size: 40px;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .abrir-menu {
+        color: #1c1c1c;
+    }
+
+    .cerrar-menu {
+        color: #ececec;
+    }
+
+    .nav {
+        opacity: 0;
+        visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        gap: 1rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #1c1c1c;
+        padding: 2rem;
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);
+    }
+
+    .nav.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: end;
+    }
+
+    .nav-list li a {
+        color: #ecececec;
+    }
+}
